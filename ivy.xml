@@ -53,6 +53,12 @@
 
         <dependency org="org.json" name="json" rev="20150729"/>
 
+        <dependency org="com.squareup.retrofit2" name="retrofit" rev="2.0.0-beta3"/>
+        <dependency org="com.squareup.retrofit2" name="retrofit-converters" rev="2.0.0-beta3"/>
+        <dependency org="com.squareup.retrofit2" name="converter-gson" rev="2.0.0-beta3"/>
+        <dependency org="com.google.code.gson" name="gson" rev="2.5"/>
+
+        <dependency org="org.projectlombok" name="lombok" rev="1.16.6"/>
     </dependencies>
 
 </ivy-module>
