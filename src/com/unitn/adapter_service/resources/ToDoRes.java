@@ -42,14 +42,14 @@ public class ToDoRes {
     @Path("/task")
     @Consumes({MediaType.APPLICATION_JSON })
     @Produces({MediaType.APPLICATION_JSON })
-    public boolean createTask(Task task){
+    public Task createTask(Task task){
+        Task t = null;
         try {
-            Task t = todoLyService.createTask(task).execute().body();
-            return true;
+            t = todoLyService.createTask(task).execute().body();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return t;
     }
 
     @GET
