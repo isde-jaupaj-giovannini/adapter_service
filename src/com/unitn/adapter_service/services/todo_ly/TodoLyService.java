@@ -36,6 +36,6 @@ public interface TodoLyService {
     Call<Task> createTask(@Body Task task);
 
     @PUT("api/items/{id}.json")
-    Call<Task> updateTask(@Path("id") long taskID);
+    Call<Task> updateTask(@Path("id") long taskID, @Body Task task);
 
 }
