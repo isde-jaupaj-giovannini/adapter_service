@@ -24,4 +24,14 @@ public class Task {
     public List<Task> Children;
     public String CreatedDate;
     public Boolean Deleted;
+
+
+    public Task(String content){
+        this.Content = content;
+    }
+    public Task(String content, long projectId){
+        this.Content = content;
+        this.ProjectId = projectId;
+    }
+
 }
