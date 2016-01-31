@@ -1,4 +1,4 @@
-package com.unitn.adapter_service.services;
+package com.unitn.adapter_service.services.quotes;
 
 import lombok.Data;
 

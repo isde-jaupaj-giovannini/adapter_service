@@ -1,4 +1,4 @@
-package com.unitn.adapter_service.services;
+package com.unitn.adapter_service.services.quotes;
 
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
