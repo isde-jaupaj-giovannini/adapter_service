@@ -31,6 +31,7 @@ public class Task {
     public List<Task> Children;
     public String CreatedDate;
     public Boolean Deleted;
+    public Boolean DueTimeSpecified = true;
 
 
     public Task(String content){
