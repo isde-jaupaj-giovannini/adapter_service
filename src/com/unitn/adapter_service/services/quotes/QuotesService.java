@@ -29,14 +29,6 @@ public interface QuotesService {
     @POST("/?cat=famous")
     Call<Quotes> getQuoteFromFamous();
 
-    static QuotesService getService(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://andruxnet-random-famous-quotes.p.mashape.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        return retrofit.create(QuotesService.class);
-    }
 
 
 }

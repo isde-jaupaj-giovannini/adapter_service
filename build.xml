@@ -97,7 +97,7 @@
 
         <javac srcdir="${src.dir}" destdir="${build.dir}"
                classpathref="lib.path.id" includeAntRuntime="false"
-               target="1.8" source="1.8"
+               target="1.7" source="1.7"
                debug="true">
         </javac>
         <copy todir="${build.dir}" overwrite="true">
@@ -107,7 +107,7 @@
             </fileset>
         </copy>
     </target>
-    
+
     <target name="start" depends="install">
         <echo message="app start com.unitn.adapter_service.App in ${build.dir}"/>
         <java classname="com.unitn.adapter_service.App" classpath="${build.dir}" fork="true">

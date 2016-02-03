@@ -1,5 +1,6 @@
 package com.unitn.adapter_service.resources;
 
+import com.unitn.adapter_service.services.ServiceGenerator;
 import com.unitn.adapter_service.services.todo_ly.Project;
 import com.unitn.adapter_service.services.todo_ly.Task;
 import com.unitn.adapter_service.services.todo_ly.TodoLyService;
@@ -16,7 +17,7 @@ import java.util.List;
 @Path("/todo")
 public class ToDoRes {
 
-    TodoLyService todoLyService = TodoLyService.getService();
+    TodoLyService todoLyService = ServiceGenerator.getTodoLyService();
 
     /**
      * Request #9: GET /measureTypes

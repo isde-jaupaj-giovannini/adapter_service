@@ -1,9 +1,15 @@
 package com.unitn.adapter_service.services;
 
+import com.unitn.adapter_service.services.quotes.QuotesService;
+import com.unitn.adapter_service.services.todo_ly.TodoLyService;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
+
+import java.io.IOException;
 
 /**
  * Created by demiurgo on 1/31/16.
@@ -23,18 +29,21 @@ public class ServiceGenerator {
         return createService(serviceClass, null);
     }
 
-    public <S> S createService(Class<S> serviceClass, String AUTH) {
+    public <S> S createService(Class<S> serviceClass, final String AUTH) {
         if (AUTH != null ) {
-            httpClient.addInterceptor(chain -> {
-                Request original = chain.request();
+            httpClient.addInterceptor(new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request original = chain.request();
 
-                Request.Builder requestBuilder = original.newBuilder()
-                        .header("Authorization", AUTH)
-                        .header("Accept", "applicaton/json")
-                        .method(original.method(), original.body());
+                    Request.Builder requestBuilder = original.newBuilder()
+                            .header("Authorization", AUTH)
+                            .header("Accept", "applicaton/json")
+                            .method(original.method(), original.body());
 
-                Request request = requestBuilder.build();
-                return chain.proceed(request);
+                    Request request = requestBuilder.build();
+                    return chain.proceed(request);
+                }
             });
         }
 
@@ -42,4 +51,20 @@ public class ServiceGenerator {
         Retrofit retrofit = builder.client(client).addConverterFactory(GsonConverterFactory.create()).build();
         return retrofit.create(serviceClass);
     }
+
+
+
+    public static QuotesService getQuoteService(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://andruxnet-random-famous-quotes.p.mashape.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(QuotesService.class);
+    }
+
+    public static TodoLyService getTodoLyService() {
+        return new ServiceGenerator("https://todo.ly").createService(TodoLyService.class, System.getenv("TODOLY_AUTH"));
+    }
+
 }

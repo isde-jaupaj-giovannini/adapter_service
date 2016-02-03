@@ -11,9 +11,7 @@ import java.util.List;
  */
 public interface TodoLyService {
 
-    static TodoLyService getService() {
-        return new ServiceGenerator("https://todo.ly").createService(TodoLyService.class, System.getenv("TODOLY_AUTH"));
-    }
+
 
     // PROJECTS API
 
