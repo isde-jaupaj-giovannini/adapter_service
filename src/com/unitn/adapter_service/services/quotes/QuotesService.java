@@ -1,8 +1,6 @@
 package com.unitn.adapter_service.services.quotes;
 
 import retrofit2.Call;
-import retrofit2.GsonConverterFactory;
-import retrofit2.Retrofit;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
@@ -19,7 +17,7 @@ public interface QuotesService {
             "Accept : application/json"
     })
     @POST("/?cat=movies")
-    Call<Quotes> getQuoteFromMovies();
+    Call<Quote> getQuoteFromMovies();
 
     @Headers({
             "X-Mashape-Key : FuPi3q56U4mshaZJjiE6ucUEa7TAp1ki9PijsnX0RiklcDlJs8",
@@ -27,7 +25,7 @@ public interface QuotesService {
             "Accept : application/json"
     })
     @POST("/?cat=famous")
-    Call<Quotes> getQuoteFromFamous();
+    Call<Quote> getQuoteFromFamous();
 
 
 
