@@ -2,6 +2,7 @@ package com.unitn.adapter_service.services;
 
 import com.unitn.adapter_service.services.quotes.QuotesService;
 import com.unitn.adapter_service.services.todo_ly.TodoLyService;
+import com.unitn.adapter_service.services.xkcd.XkcdService;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -67,4 +68,12 @@ public class ServiceGenerator {
         return new ServiceGenerator("https://todo.ly").createService(TodoLyService.class, System.getenv("TODOLY_AUTH"));
     }
 
+    public static XkcdService getXkcdService(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://xkcd.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(XkcdService.class);
+    }
 }
