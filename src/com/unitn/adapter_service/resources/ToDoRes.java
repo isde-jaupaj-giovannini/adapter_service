@@ -66,6 +66,19 @@ public class ToDoRes {
         return ls;
     }
 
+    @GET
+    @Path("{projectId}")
+    @Produces({MediaType.APPLICATION_JSON })
+    public List<Task> getDoneTaskList(@PathParam("projectId") long projectId){
+        List<Task> ls = null;
+        try {
+            ls = todoLyService.getProjectDoneTasks(projectId).execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ls;
+    }
+
     @PUT
     @Produces({MediaType.APPLICATION_JSON })
     public Task updateTask(Task task){
